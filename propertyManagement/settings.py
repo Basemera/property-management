@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# AUTH_USER_MODEL = 'user.User'
 
 # Application definition
 
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'role',
     'user',
+    'graphene_django',
 ]
 
 MIDDLEWARE = [
@@ -93,6 +95,7 @@ DATABASES = {
 'ENGINE': 'django.db.backends.mysql',
 # 'NAME': 'property_management',
 'NAME' : 'properties',
+# 'alias' : 'properties',
 'USER': 'root',
 'PASSWORD': 'root',
 'HOST': '/Applications/MAMP/tmp/mysql/mysql.sock',
@@ -141,3 +144,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+GRAPHENE = {
+    'SCHEMA': 'propertyManagement.schema.schema',
+}
