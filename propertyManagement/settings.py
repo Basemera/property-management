@@ -21,12 +21,17 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'r6ta9=p6f_$+)*$cjc#3og24sno96z-m2xo)!b2bn8x1@36k0f'
+# SECRET_KEY = 'r6ta9=p6f_$+)*$cjc#3og24sno96z-m2xo)!b2bn8x1@36k0f'
+SECRET_KEY = os.getenv('SECRET_KEY', default='r6ta9=p6f_$+)*$cjc#3og24sno96z-m2xo)!b2bn8x1@36k0f')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'https://basemera-property-management.herokuapp.com',
+    'basemera-property-management.herokuapp.com',
+    'localhost'
+]
 
 # AUTH_USER_MODEL = 'user.User'
 
@@ -91,22 +96,43 @@ WSGI_APPLICATION = 'propertyManagement.wsgi.application'
 # }
 
  
-DATABASES = {
-'default': {
-'ENGINE': 'django.db.backends.mysql',
+# DATABASES = {
+# 'default': {
+# 'ENGINE': 'django.db.backends.mysql',
 # 'NAME': 'property_management',
-'NAME' : 'properties',
-# 'alias' : 'properties',
-'USER': 'root',
-'PASSWORD': 'root',
-'HOST': '/Applications/MAMP/tmp/mysql/mysql.sock',
-'PORT': '8889',
-'OPTIONS': {
-'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-}
-}
-}
+# 'NAME' : 'properties',
+# # 'alias' : 'properties',
+# 'USER': 'root',
+# 'PASSWORD': 'root',
+# 'HOST': '/Applications/MAMP/tmp/mysql/mysql.sock',
+# 'PORT': '8889',
+# 'OPTIONS': {
+# 'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+# }
+# }
+# }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': os.getenv('ENGINE', default='django.db.backends.postgresql_psycopg2'),
+#         'NAME': os.getenv('DB_NAME',default='property_management'),
+#         'USER': os.getenv('DB_USER',default='root'),
+#         'PASSWORD': os.getenv('DB_PASSWORD', default='root'),
+#         'HOST': os.getenv('HOST', default='/Applications/MAMP/tmp/mysql/mysql.sock'),
+#         'PORT': '8889',
+#     }
+# }
+
+DATABASES = {
+    'default': {
+        'ENGINE': os.getenv('ENGINE', default='django.db.backends.mysql'),
+        'NAME': os.getenv('DB_NAME',default='properties'),
+        'USER': os.getenv('DB_USER',default='root'),
+        'PASSWORD': os.getenv('DB_PASSWORD', default='root'),
+        'HOST': os.getenv('HOST', default='/Applications/MAMP/tmp/mysql/mysql.sock'),
+        'PORT': '8889',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
