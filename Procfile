@@ -1,2 +1,2 @@
-web: gunicorn propertyManagement.wsgi 
-release: pipenv shell && pipenv --python 3 run python manage.py makemigrations --noinput && pipenv --python 3 run python manage.py migrate --noinput && pipenv --python 3 install requirements.txt
+web: gunicorn propertyManagement.wsgi —-log-file -
+release: pipenv --python 3 install -r requirements.txt && python manage.py makemigrations --noinput && python manage.py migrate --noinput
