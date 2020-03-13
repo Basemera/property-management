@@ -18,10 +18,6 @@ class CreateRole(graphene.Mutation):
         description =graphene.String()
 
     def mutate(self, info, role_name, description):
-        
-        if Role.objects.get(role_name=role_name):
-            roleInstance = Role.objects.get(role_name=role_name)
-            return CreateRole(role=roleInstance)
         role = Role(role_name=role_name, description=description)
         role.save()
         return CreateRole(role=role)
