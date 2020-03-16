@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'role',
     'user',
     'graphene_django',
+    'permissions',
 ]
 
 MIDDLEWARE = [

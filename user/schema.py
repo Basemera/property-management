@@ -2,6 +2,7 @@ from django.contrib.auth import get_user_model
 import graphene
 from graphene_django import DjangoObjectType
 from role.models import Role
+from django.contrib.auth.models import Permission
 
 
 class UserType(DjangoObjectType):
@@ -19,9 +20,11 @@ class CreateUser(graphene.Mutation):
         password = graphene.String(required=True)
         email = graphene.String(required=True)
         role = graphene.Int(required=True)
+        permission = graphene.String(required=True)
 
-    def mutate(self, info, username, first_name, last_name, password, email, role):
+    def mutate(self, info, username, first_name, last_name, password, email, role, permission):
         roleInstance = Role.objects.get(pk=role)
+        permission = Permission.objects.get(codename=permission)
         user = get_user_model()(
             username=username,
             first_name=first_name,
@@ -31,7 +34,7 @@ class CreateUser(graphene.Mutation):
         )
         user.set_password(password)
         user.save()
-
+        user.user_permissions.add(permission)
         return CreateUser(user=user)
 
 
