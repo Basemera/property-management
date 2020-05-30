@@ -30,6 +30,9 @@ jobs:
 #     - name: Lint with flake8
 #       run: |
 #         flake8
+    - name: Start mysql
+      run: |
+          sudo service mysql start
     - name: Test with test
       run: |
         python manage.py test
