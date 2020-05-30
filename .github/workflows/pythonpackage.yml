@@ -36,7 +36,7 @@ jobs:
     - name: Grant priviledges
       run: |
          mysql -u root --password=root --port 8889 -e 'CREATE USER 'new_user'@'localhost';'
-        #  mysql -u root --password=root --port 8889 -e 'GRANT ALL PRIVILEGES ON test_properties.* TO 'new_user'@'localhost';'
+         mysql -u root --password=root --port 8889 -e 'GRANT ALL PRIVILEGES ON test_properties.* TO 'new_user'@'localhost';'
     - name: Test with test
       run: |
         python manage.py test
