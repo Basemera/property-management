@@ -35,7 +35,8 @@ jobs:
           sudo service mysql start
     - name: Grant priviledges
       run: |
-         mysql -u root --password=root --port 8889 -e 'GRANT ALL PRIVILEGES ON test_properties.* TO 'new_user'@'127.0.0.1' IDENTIFIED BY 'root';'
+         mysql -u root --password=root --port 8889 -e 'CREATE USER 'new_user'@'%' IDENTIFIED BY 'root';'
+         mysql -u root --password=root --port 8889 -e 'GRANT ALL PRIVILEGES ON test_properties.* TO 'new_user'@'%' IDENTIFIED BY 'root';'
     - name: Test with test
       run: |
         python manage.py test
