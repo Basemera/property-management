@@ -101,21 +101,22 @@ WSGI_APPLICATION = 'propertyManagement.wsgi.application'
 # }
 
  
-# DATABASES = {
-# 'default': {
-# 'ENGINE': 'django.db.backends.mysql',
-# 'NAME': 'property_management',
-# 'NAME' : 'properties',
-# # 'alias' : 'properties',
-# 'USER': 'root',
-# 'PASSWORD': 'root',
+DATABASES = {
+'default': {
+'ENGINE': 'django.db.backends.mysql',
+# 'NAME': 'new_user@properties;',
+'NAME' : 'properties',
+# 'alias' : 'properties',
+'USER': 'new_user',
+'PASSWORD': 'root',
+'HOST' : 'localhost',
 # 'HOST': '/Applications/MAMP/tmp/mysql/mysql.sock',
-# 'PORT': '8889',
-# 'OPTIONS': {
-# 'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-# }
-# }
-# }
+'PORT': '8889',
+'OPTIONS': {
+'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+}
+}
+}
 
 # DATABASES = {
 #     'default': {
@@ -128,16 +129,16 @@ WSGI_APPLICATION = 'propertyManagement.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': os.getenv('ENGINE', default='django.db.backends.mysql'),
-        'NAME': os.getenv('DB_NAME',default='properties'),
-        'USER': os.getenv('DB_USER',default='root'),
-        'PASSWORD': os.getenv('DB_PASSWORD', default='root'),
-        'HOST': os.getenv('HOST', default='/Applications/MAMP/tmp/mysql/mysql.sock'),
-        'PORT': '8889',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': os.getenv('ENGINE', default='django.db.backends.mysql'),
+#         'NAME': os.getenv('DB_NAME',default='property_management'),
+#         'USER': os.getenv('DB_USER',default='property'),
+#         'PASSWORD': os.getenv('DB_PASSWORD', default='root'),
+#         'HOST': os.getenv('HOST', default='/Applications/MAMP/tmp/mysql/mysql.sock'),
+#         'PORT': '8889',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
