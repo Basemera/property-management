@@ -12,8 +12,8 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
+        ('auth', '0013_remove_user_role'),
         ('role', '0003_auto_20200313_1223'),
-        # ('auth', '0013_remove_user_role'),
     ]
 
     operations = [
