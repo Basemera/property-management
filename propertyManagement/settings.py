@@ -118,6 +118,31 @@ DATABASES = {
 }
 }
 
+
+if os.environ.get('GITHUB_WORKFLOW'):
+    DATABASES = {
+        'default': {
+           'ENGINE': 'django.db.backends.mysql',
+           'NAME' : 'properties',
+           'USER': 'new_user',
+           'PASSWORD': 'root',
+           'HOST': '127.0.0.1',
+           'PORT': '8889',
+        }
+    }
+
+    if os.environ.get('test'):
+        DATABASES = {
+        'default': {
+           'ENGINE': 'django.db.backends.mysql',
+           'NAME': 'test_properties',
+           'USER': 'new_user',
+           'PASSWORD': 'root',
+           'HOST': '127.0.0.1',
+           'PORT': '8889',
+        }
+    }
+
 # DATABASES = {
 #     'default': {
 #         'ENGINE': os.getenv('ENGINE', default='django.db.backends.postgresql_psycopg2'),
