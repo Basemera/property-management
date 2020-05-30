@@ -34,7 +34,7 @@ jobs:
       run: |
           sudo service mysql start
     - env:
-        MYSQL_ROOT_PASSWORD: ''
+      uses: MYSQL_ROOT_PASSWORD: ''
     - name: Grant priviledges
       run: |
          mysql -u root -p 'root' --port 8889 -e 'GRANT ALL PRIVILEGES ON test_properties.* TO 'new_user'@'%' IDENTIFIED BY 'root';'
