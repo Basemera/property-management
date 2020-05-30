@@ -126,7 +126,7 @@ if os.environ.get('GITHUB_WORKFLOW'):
            'NAME' : 'properties',
            'USER': 'new_user',
            'PASSWORD': 'root',
-           'HOST': '127.0.0.1',
+           'HOST': 'localhost',
            'PORT': '8889',
         }
     }
