@@ -125,7 +125,7 @@ if os.environ.get('GITHUB_WORKFLOW'):
            'ENGINE': 'django.db.backends.mysql',
            'NAME' : 'properties',
            'USER': 'new_user',
-           'PASSWORD': 'root',
+           'PASSWORD': '',
            'HOST': 'localhost',
            'PORT': '8889',
         }
@@ -137,7 +137,7 @@ if os.environ.get('GITHUB_WORKFLOW'):
            'ENGINE': 'django.db.backends.mysql',
            'NAME': 'test_properties',
            'USER': 'new_user',
-           'PASSWORD': 'root',
+           'PASSWORD': '',
            'HOST': '127.0.0.1',
            'PORT': '8889',
         }
