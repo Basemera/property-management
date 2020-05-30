@@ -40,3 +40,6 @@ jobs:
     - name: Test with test
       run: |
         python manage.py test
+    - name: Stop mysql
+          run: |
+              sudo service mysql stop
