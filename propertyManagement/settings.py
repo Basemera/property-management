@@ -124,7 +124,7 @@ DATABASES = {
         'ENGINE' : os.environ.get('ENGINE', 'django.db.backends.postgresql'),
         # 'NAME': 'new_user@properties;',
         # 'NAME' : 'properties',
-        'NAME' : os.environ.get('DB_NAME', 'enju-properties'),
+        'NAME' : os.environ.get('DB_NAME', ''),
         # 'alias' : 'properties',
         # 'USER': 'new_user',
         'USER' : os.environ.get('DB_USER', 'postgres'),
