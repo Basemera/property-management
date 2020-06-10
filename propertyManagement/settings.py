@@ -124,17 +124,17 @@ DATABASES = {
         'ENGINE' : os.environ.get('ENGINE', 'django.db.backends.postgresql'),
         # 'NAME': 'new_user@properties;',
         # 'NAME' : 'properties',
-        'NAME' : os.environ.get('NAME', 'enju-properties'),
+        'NAME' : os.environ.get('DB_NAME', 'enju-properties'),
         # 'alias' : 'properties',
         # 'USER': 'new_user',
-        'USER' : os.environ.get('USER', 'postgres'),
+        'USER' : os.environ.get('DB_USER', 'postgres'),
         # 'PASSWORD': 'root',
-        'PASSWORD' : os.environ.get('PASSWORD', 'Welcome123!'),
+        'PASSWORD' : os.environ.get('DB_PASSWORD', 'Welcome123!'),
         # 'HOST' : 'localhost',
-        'HOST' : os.environ.get('HOST', 'enju-properties.c5l67bhqsieq.us-east-2.rds.amazonaws.com'),
+        'HOST' : os.environ.get('DB_HOST', 'enju-properties.c5l67bhqsieq.us-east-2.rds.amazonaws.com'),
         # 'HOST': '/Applications/MAMP/tmp/mysql/mysql.sock',
         # 'PORT': '8889',
-        'PORT' : os.environ.get('PORT', '5432'),
+        'PORT' : os.environ.get('DB_PORT', '5432'),
         'OPTIONS': {
         # 'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
         }
