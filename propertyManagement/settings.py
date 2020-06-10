@@ -136,7 +136,7 @@ DATABASES = {
         # 'PORT': '8889',
         'PORT' : os.environ.get('PORT', '5432'),
         'OPTIONS': {
-        'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        # 'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
         }
     }
 }
