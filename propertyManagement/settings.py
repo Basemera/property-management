@@ -129,7 +129,7 @@ DATABASES = {
         # 'USER': 'new_user',
         'USER' : os.environ.get('USER', 'postgres'),
         # 'PASSWORD': 'root',
-        'PASSWORD' : os.environ.get('PASSWORD', 'NtZiXm0LqgXCx8YYzEkI'),
+        'PASSWORD' : os.environ.get('PASSWORD', 'Welcome123!'),
         # 'HOST' : 'localhost',
         'HOST' : os.environ.get('HOST', 'enju-properties.c5l67bhqsieq.us-east-2.rds.amazonaws.com'),
         # 'HOST': '/Applications/MAMP/tmp/mysql/mysql.sock',
