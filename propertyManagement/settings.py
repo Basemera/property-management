@@ -32,7 +32,8 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'https://basemera-property-management.herokuapp.com',
     'basemera-property-management.herokuapp.com',
-    'localhost'
+    'localhost',
+    'ec2-3-16-148-152.us-east-2.compute.amazonaws.com'
 ]
 
 AUTH_USER_MODEL = 'user.User'
