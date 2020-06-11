@@ -30,11 +30,11 @@ SECRET_KEY = os.getenv('SECRET_KEY', default='r6ta9=p6f_$+)*$cjc#3og24sno96z-m2x
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'https://basemera-property-management.herokuapp.com',
-    'basemera-property-management.herokuapp.com',
-    'localhost',
-    'ec2-3-16-148-152.us-east-2.compute.amazonaws.com',
-    'ec2-18-216-84-128.us-east-2.compute.amazonaws.com',
+    # 'https://basemera-property-management.herokuapp.com',
+    # 'basemera-property-management.herokuapp.com',
+    # 'localhost',
+    # 'ec2-3-16-148-152.us-east-2.compute.amazonaws.com',
+    # 'ec2-18-216-84-128.us-east-2.compute.amazonaws.com',
     '*'
     
 ]
