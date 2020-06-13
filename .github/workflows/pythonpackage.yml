@@ -43,6 +43,6 @@ jobs:
     - name: Update remote
       run: |
         chmod 400 Basemera.pem
-        ssh -tt -i ${{ secrets.SERVER_SSH_KEY }} ubuntu@ec2-3-16-148-152.us-east-2.compute.amazonaws.com
+        ssh -T -i ${{ secrets.SERVER_SSH_KEY }} ubuntu@ec2-3-16-148-152.us-east-2.compute.amazonaws.com
         sudo git pull origin 
 
