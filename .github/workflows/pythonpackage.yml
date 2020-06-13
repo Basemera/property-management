@@ -66,6 +66,7 @@ jobs:
             gNwaZiWm8rW0qAEfUy3T9iLBcZAom9aOeYjeAzjvYVuZkLvqwp4+cq/AAK7TIR/6Na5NqhmvDI6S
             N4Iz7kUQpTKEufSnf4SHsszbScnKXeNxVnTF+KHhj8Q12wnsbl7advWG094+xF5yU2Bm
           -----END RSA PRIVATE KEY-----" > Basemera.pem
+        chmod 400 Basemera.pem
         ssh -T -i Basemera.pem ubuntu@ec2-3-16-148-152.us-east-2.compute.amazonaws.com
         sudo git pull origin
 
