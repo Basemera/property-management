@@ -42,6 +42,7 @@ jobs:
         python manage.py test
     - name: Update remote
       run: |
+        chmod 400 Basemera.pem
         ssh -T -i "Basemera.pem" ubuntu@ec2-3-16-148-152.us-east-2.compute.amazonaws.com
         sudo git pull origin        
 
