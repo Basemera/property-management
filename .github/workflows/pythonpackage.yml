@@ -41,8 +41,11 @@ jobs:
       run: |
         python manage.py test
     - name: Update remote
-      run: |
-        chmod 400 Basemera.pem
-        ssh -tt -i "Basemera.pem" ubuntu@ec2-3-16-148-152.us-east-2.compute.amazonaws.com
-        sudo git pull origin        
+        uses: easingthemes/ssh-deploy@v2.0.7
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          ARGS: "-rltgoDzvO"
+          SOURCE: "dist/"
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}      
 
