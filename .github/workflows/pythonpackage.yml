@@ -43,7 +43,7 @@ jobs:
     - name: Update remote
       run: |
         cat > Basemera.pem
-          printf "-----BEGIN RSA PRIVATE KEY-----
+          echo "-----BEGIN RSA PRIVATE KEY-----
             MIIEowIBAAKCAQEAjE3pw8Skv3RiUoHKOPv92Xm8XgZfS44dzxy8PgYb10wUBlmW0RkEQ/P88IW/
             38FES1C9S8CnKoXG72EuKD8SwZ6SpU1y5d4+7GHJg4vEKnnUetPEZnzHQkDVyITdc9SgHA0WZKuP
             dJZceQcDZptwgvESbIgBi1MmJogDwP9Cc0HRWwGXjg/ElybExsEfBQVaI0kMdPqwpnq1s5xb/TDf
