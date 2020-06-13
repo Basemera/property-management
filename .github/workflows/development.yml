@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - dev
+  pull_request:
+      branches: [ dev ]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -10,3 +12,25 @@ jobs:
     - uses: actions/checkout@v1
     - name: Run a one-line script
       run: echo "Only on dev branches"
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v1
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+#     - name: Lint with flake8
+#       run: |
+#         flake8
+    - name: Start mysql
+      run: |
+          sudo service mysql start
+    - name: Grant priviledges
+      run: |
+         mysql -u root --password=root --port 8889 -e "CREATE USER 'new_user'@'localhost';"
+         mysql -u root --password=root --port 8889 -e "GRANT ALL PRIVILEGES ON test_properties.* TO 'new_user'@'localhost';"
+    - name: Test with test
+      run: |
+        python manage.py test
+    
