@@ -1,13 +1,13 @@
 # This workflow will install Python dependencies, run tests and lint with a variety of Python versions
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
 
-name: Python package
+name: FeatureCI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ dev ]
   pull_request:
-    branches: [ master ]
+    branches: [ dev ]
 
 jobs:
   build:
@@ -39,9 +39,15 @@ jobs:
          mysql -u root --password=root --port 8889 -e "GRANT ALL PRIVILEGES ON test_properties.* TO 'new_user'@'localhost';"
     - name: Test with test
       run: |
+        cd propertymanagement
         python manage.py test
-    - name: Update remote
-      run: |
-        ssh -i "Basemera.pem" ubuntu@ec2-3-16-148-152.us-east-2.compute.amazonaws.com
-        sudo git pull origin        
+    - name: Update remote        
+      uses: easingthemes/ssh-deploy@v2.1.1
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+        ARGS: "-rltgoDzvO"
+        SOURCE: "propertymanagement/"
+        REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+        REMOTE_USER: ${{ secrets.REMOTE_USER }}   
+      
 
