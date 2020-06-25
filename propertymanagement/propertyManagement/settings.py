@@ -132,24 +132,18 @@ WSGI_APPLICATION = 'propertyManagement.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.mysql',
-        'ENGINE' : os.environ.get('ENGINE', 'django.db.backends.postgresql'),
-        # 'NAME': 'new_user@properties;',
-        # 'NAME' : 'properties',
-        'NAME' : os.environ.get('DB_NAME', 'enju-properties'),
-        # 'alias' : 'properties',
-        # 'USER': 'new_user',
-        'USER' : os.environ.get('DB_USER', 'postgres'),
-        # 'PASSWORD': 'root',
-        'PASSWORD' : os.environ.get('DB_PASSWORD', 'Welcome123!'),
-        # 'HOST' : 'localhost',
-        'HOST' : os.environ.get('DB_HOST', 'enju-properties.c5l67bhqsieq.us-east-2.rds.amazonaws.com'),
-        # 'HOST': '/Applications/MAMP/tmp/mysql/mysql.sock',
-        # 'PORT': '8889',
-        'PORT' : os.environ.get('DB_PORT', '5432'),
-        'OPTIONS': {
-        # 'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-        }
+        'ENGINE': os.environ.get('ENGINE', 'django.db.backends.postgresql'),
+
+        'NAME': os.environ.get('DB_NAME', 'enju-properties'),
+
+        'USER': os.environ.get('DB_USER', 'postgres'),
+
+        'PASSWORD': os.environ.get('DB_PASSWORD', 'Welcome123!'),
+
+        'HOST': os.environ.get('DB_HOST', 'enju-properties.c5l67bhqsieq.us-east-2.rds.amazonaws.com'),
+
+        'PORT': os.environ.get('DB_PORT', '5432'),
+
     }
 }
 
@@ -239,7 +233,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATIC_URL = '/static/'
 
@@ -255,5 +249,11 @@ GRAPHENE = {
     'SCHEMA': 'propertyManagement.schema.schema',
 
 }
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = os.getenv('EMAIL_PORT')
 
 # django_heroku.settings(locals())

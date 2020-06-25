@@ -1,26 +1,33 @@
 import graphene
 from graphene_django import DjangoObjectType
-
+from graphql import GraphQLError
 from role.models import Role
 
 class RoleType(DjangoObjectType):
     class Meta:
         model = Role
-
-class CreateRole(graphene.Mutation):
+class RoleInput(graphene.InputObjectType):
     id = graphene.Int()
     role_name = graphene.String()
     description =graphene.String()
-    role = graphene.Field(RoleType)
+class CreateRole(graphene.Mutation):
+    
+    # role_name = graphene.String()
+    # description =graphene.String()
+    # 
 
     class Arguments:
-        role_name = graphene.String()
-        description =graphene.String()
+        input = RoleInput(required=True)
+    role = graphene.Field(RoleType)
 
-    def mutate(self, info, role_name, description):
-        role = Role(role_name=role_name, description=description)
-        role.save()
-        return CreateRole(role=role)
+    @staticmethod
+    def mutate(root, info, input):
+        if Role.objects.get(role_name=input.role_name):
+            raise GraphQLError('The role already exists')
+            # return {'error':'The role already exists'}
+        role_instance = Role(role_name=input.role_name, description=input.description)
+        role_instance.save()
+        return CreateRole(role=role_instance)
 
 class Mutation(graphene.ObjectType):
     create_role = CreateRole.Field()
