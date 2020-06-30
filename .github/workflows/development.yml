@@ -1,24 +1,20 @@
-# This workflow will install Python dependencies, run tests and lint with a variety of Python versions
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
-
-name: Python package
-
+name: FeatureCI
 on:
   push:
-    branches: [ master ]
+    branches:
+      - dev
   pull_request:
-    branches: [ master ]
-
+      branches: [ dev ]
 jobs:
   build:
-
     runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: [3.8]
-
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v1
+    - name: Run a one-line script
+      run: echo "Only on dev branches"
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v1
       with:
@@ -39,13 +35,6 @@ jobs:
          mysql -u root --password=root --port 8889 -e "GRANT ALL PRIVILEGES ON test_properties.* TO 'new_user'@'localhost';"
     - name: Test with test
       run: |
+        cd propertymanagement
         python manage.py test
-    - name: Update remote        
-      uses: easingthemes/ssh-deploy@v2.1.1
-      env:
-        SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
-        ARGS: "-rltgoDzvO"
-        SOURCE: "property-management/"
-        REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-        REMOTE_USER: ${{ secrets.REMOTE_USER }}   
-
+    

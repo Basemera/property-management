@@ -39,7 +39,6 @@ ALLOWED_HOSTS = [
     
 ]
 
-AUTH_USER_MODEL = 'user.User'
 
 # Application definition
 
@@ -50,11 +49,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 'propertymanagement.role',
     'role',
+    # 'propertymanagement.user',
     'user',
     'graphene_django',
-    'permissions',
+    # 'propertymanagement.permissions',
+    'permissions'
 ]
+
+AUTH_USER_MODEL = 'user.User'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -68,7 +73,9 @@ MIDDLEWARE = [
 
 ]
 
+# ROOT_URLCONF = 'propertymanagement.propertyManagement.urls'
 ROOT_URLCONF = 'propertyManagement.urls'
+
 
 TEMPLATES = [
     {
@@ -86,6 +93,7 @@ TEMPLATES = [
     },
 ]
 
+# WSGI_APPLICATION = 'propertymanagement.propertyManagement.wsgi.application'
 WSGI_APPLICATION = 'propertyManagement.wsgi.application'
 
 
@@ -243,7 +251,9 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 GRAPHENE = {
+    # 'SCHEMA': 'propertymanagement.propertyManagement.schema.schema',
     'SCHEMA': 'propertyManagement.schema.schema',
+
 }
 
 # django_heroku.settings(locals())
