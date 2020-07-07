@@ -9,4 +9,10 @@ from django.contrib.auth.models import AbstractUser
 
 class User(AbstractUser):
     # User = get_user_model()
+    # role = models.ForeignKey('role.Role', on_delete=models.CASCADE, default=1)
+    username = models.CharField(max_length=255, unique=True)
     role = models.ForeignKey('role.Role', on_delete=models.CASCADE, default=1)
+    first_name = models.CharField(max_length=50, blank=False, null=False)
+    last_name = models.CharField(max_length=50, blank=False, null=False)
+    phone_number = models.CharField(max_length=50, blank=False, null=False, default="0783012871")
+    logged_in = models.BooleanField(default=False)

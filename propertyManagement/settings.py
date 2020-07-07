@@ -133,17 +133,17 @@ WSGI_APPLICATION = 'propertyManagement.wsgi.application'
 DATABASES = {
     'default': {
         # 'ENGINE': 'django.db.backends.mysql',
-        'ENGINE' : os.environ.get('ENGINE', 'django.db.backends.postgresql'),
+        'ENGINE' : os.environ.get('ENGINE', 'django.db.backends.postgresql_psycopg2'),
         # 'NAME': 'new_user@properties;',
         # 'NAME' : 'properties',
-        'NAME' : os.environ.get('DB_NAME', 'enju-properties'),
+        'NAME' : os.environ.get('DB_NAME', 'property_management'),
         # 'alias' : 'properties',
         # 'USER': 'new_user',
         'USER' : os.environ.get('DB_USER', 'postgres'),
         # 'PASSWORD': 'root',
-        'PASSWORD' : os.environ.get('DB_PASSWORD', 'Welcome123!'),
+        'PASSWORD' : os.environ.get('DB_PASSWORD', 'jesus250'),
         # 'HOST' : 'localhost',
-        'HOST' : os.environ.get('DB_HOST', 'enju-properties.c5l67bhqsieq.us-east-2.rds.amazonaws.com'),
+        'HOST' : os.environ.get('DB_HOST', 'localhost'),
         # 'HOST': '/Applications/MAMP/tmp/mysql/mysql.sock',
         # 'PORT': '8889',
         'PORT' : os.environ.get('DB_PORT', '5432'),
@@ -253,7 +253,21 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 GRAPHENE = {
     # 'SCHEMA': 'propertymanagement.propertyManagement.schema.schema',
     'SCHEMA': 'propertyManagement.schema.schema',
+    'MIDDLEWARE': [
+        'graphql_jwt.middleware.JSONWebTokenMiddleware',
+    ],
 
 }
+
+AUTHENTICATION_BACKENDS = [
+    'graphql_jwt.backends.JSONWebTokenBackend',
+    'django.contrib.auth.backends.AllowAllUsersModelBackend'
+]
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = os.getenv('EMAIL_PORT')
 
 # django_heroku.settings(locals())

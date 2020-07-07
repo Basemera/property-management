@@ -39,15 +39,25 @@ jobs:
          mysql -u root --password=root --port 8889 -e "GRANT ALL PRIVILEGES ON test_properties.* TO 'new_user'@'localhost';"
     - name: Test with test
       run: |
+<<<<<<< HEAD
+        cd property-management
+=======
         cd propertymanagement
+>>>>>>> 3862907000a6c43680316c5307e37b515535264d
         python manage.py test
     - name: Update remote        
       uses: easingthemes/ssh-deploy@v2.1.1
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
         ARGS: "-rltgoDzvO"
+<<<<<<< HEAD
+        SOURCE: "property-management/"
+        REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+        REMOTE_USER: ${{ secrets.REMOTE_USER }}   
+=======
         SOURCE: "propertymanagement/"
         REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
         REMOTE_USER: ${{ secrets.REMOTE_USER }}   
       
+>>>>>>> 3862907000a6c43680316c5307e37b515535264d
 
