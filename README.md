@@ -2,3 +2,5 @@
 
 # property-management
 A property management app
+This is an app that will help property owners to manage their different properties easily.
+#Work in progress !!!
